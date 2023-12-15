@@ -6,12 +6,13 @@ import { CreateProductInput, UpdateProductInput } from '../types/graphql';
 export class ProductService {
   constructor(private prisma: PrismaService) {}
 
-  create({ title, price, ownerId }: CreateProductInput) {
+  create({ title, price, ownerId, image }: CreateProductInput) {
     return this.prisma.product.create({
       data: {
         title,
         price,
         ownerId,
+        image,
       },
     });
   }

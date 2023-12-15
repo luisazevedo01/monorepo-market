@@ -20,6 +20,7 @@ export class CreateContactInput {
 export class CreateProductInput {
     title: string;
     price: string;
+    image: string;
     ownerId: number;
 }
 
@@ -28,6 +29,7 @@ export class UpdateProductInput {
     title: string;
     description?: Nullable<string>;
     price: string;
+    image: string;
     ownerId?: Nullable<number>;
 }
 
@@ -87,6 +89,7 @@ export class Product {
     title: string;
     description?: Nullable<string>;
     price: string;
+    image: string;
     ownerId?: Nullable<number>;
     owner?: Nullable<User>;
 }
