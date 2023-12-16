@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 
 const client = new ApolloClient({
-    uri: 'http://localhost:8000/graphql',
+    uri: process.env.NESTJS_SERVER ?? 'http://localhost:8000/graphql',
     cache: new InMemoryCache(),
 });
 
