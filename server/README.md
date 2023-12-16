@@ -22,8 +22,15 @@ $ yarn install
 ```bash
 # run the docker daemon ( usually done by starting the docker desktop app )
 $ open --background -a Docker
+
 # run docker-compose to start the postges serviçe
 $ docker-compse up
+
+# migrate the database to generate the tables
+$ pnpm prisma migrate dev
+
+# seed the database with records
+$ pnpm prisma db seed
 ```
 
 ## Running the app
