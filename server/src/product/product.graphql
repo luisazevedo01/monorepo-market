@@ -4,6 +4,7 @@ type Product {
   description: String
   price: String!
   image: String!
+  stock: Int
   ownerId: Int
   owner: User
 }

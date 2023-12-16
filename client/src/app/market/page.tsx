@@ -15,8 +15,13 @@ export default function Market() {
     if (loading) return <p>Loading...</p>;
     console.log("products: ", products);
 
+    const addProduct = () => {
+
+    }
+
     return (
         <div className="p-20 bg-lime-200 flex flex-wrap justify-center max-w">
+            <button onClick={addProduct}>Add product</button>
             {(products.length ? products : MOCKED_PRODUCTS).map((product: any, idx: any) => (
                 <ProductCard key={`product_${idx}`} img={product.image} title={product.title} price={product.price} />
             ))}

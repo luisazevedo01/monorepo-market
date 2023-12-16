@@ -90,6 +90,7 @@ export class Product {
     description?: Nullable<string>;
     price: string;
     image: string;
+    stock?: Nullable<number>;
     ownerId?: Nullable<number>;
     owner?: Nullable<User>;
 }
