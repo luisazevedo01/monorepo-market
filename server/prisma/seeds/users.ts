@@ -4,15 +4,21 @@ const USERS = [
     {
         name: 'Luis',
         email: 'luismiguelgomes2@fmail.com',
-        userType: 'costumer',
+        userType: 'CUSTOMER',
         createdAt: new Date(),
     },
     {
         name: 'Miguel',
-        email: 'Miguelgomes2@fmail.com',
-        userType: 'costumer',
+        email: 'miguel2@fmail.com',
+        userType: 'SELLER',
         createdAt: new Date(),
-    }
+    },
+    {
+        name: 'Hugo',
+        email: 'hugobarcelos3@fmail.com',
+        userType: 'CUSTOMER',
+        createdAt: new Date(),
+    },
 ];
 
 async function user_seeds(prisma: PrismaClient) {
