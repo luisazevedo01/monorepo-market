@@ -1,23 +1,35 @@
-import Image from "next/image";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 
 type TProductCardProps = {
     img: string;
     title: string;
+    description?: string;
     price: string;
 }
 
 export const ProductCard = (props: TProductCardProps) => {
     return (
-        <div className="p-10 ">
-            <div className="flex flex-col justify-between bg-white rounded-lg shadow-lg w-72 h-72">
-                <Image width={208} height={208} src={props.img} alt="" className="rounded-t-lg h-52 mx-auto" />
-                <div className="p-6 flex justify-between">
-                    <h3 className="font-bold mb-2 text-2xl">{props.title}</h3>
-                    <h3 className="font-bold mb-2 text-2xl">{props.price}€</h3>
-                </div>
-
-            </div>
-        </div>
-
+        <Card sx={{ width: 345, margin: '20px' }}>
+            <CardMedia
+                sx={{ objectFit: 'contain', height: '200px' }}
+                component="img"
+                alt={props.title}
+                image={props.img}
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {props.title}
+                </Typography>
+                <Typography gutterBottom variant="body1" component="div">
+                    Preço: {props.price}€
+                </Typography>
+                {props.description && <Typography variant="body2" color="text.secondary">
+                    {props.description}
+                </Typography>}
+            </CardContent>
+            <CardActions>
+                <Button color="success" size="small">Comprar</Button>
+            </CardActions>
+        </Card>
     )
 }

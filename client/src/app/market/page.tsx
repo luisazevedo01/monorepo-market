@@ -37,7 +37,7 @@ export default function Market() {
                 wrap="wrap"
                 padding={20}
             >
-                {(products.length ? products : MOCKED_PRODUCTS).map((product: any, idx: any) => (
+                {(products?.length ? products : MOCKED_PRODUCTS).map((product: any, idx: any) => (
                     <ProductCard key={`product_${idx}`} img={product.image} title={product.title} price={product.price} />
                 ))}
             </Grid>
