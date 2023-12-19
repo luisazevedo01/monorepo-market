@@ -1,4 +1,12 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField } from "@mui/material"
+import {
+    Button,
+    Dialog, DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Grid,
+    TextField
+} from "@mui/material"
 
 interface ModalProps {
     open: boolean;
