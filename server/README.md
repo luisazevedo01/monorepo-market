@@ -24,7 +24,7 @@ $ yarn install
 $ open --background -a Docker
 
 # run docker-compose to start the postges serviçe
-$ docker-compse up
+$ docker-compose up
 
 # migrate the database to generate the tables
 $ pnpm prisma migrate dev
