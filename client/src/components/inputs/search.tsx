@@ -2,21 +2,20 @@ import * as React from "react";
 import { alpha, styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
-import { Select } from "@mui/material";
-import { Option } from "@mui/base/Option";
-import { SelectOption } from "@mui/base/useOption";
+
 
 const SearchStyle = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.secondary.main, 0.9),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.secondary.main, 1),
   },
+  color: "white",
   marginLeft: 0,
-  width: "8rem",
+  width: "100%",
+  flexGrow: 1,
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
@@ -34,11 +33,10 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "white",
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
@@ -72,24 +70,17 @@ export default function Search({ products, setProduct }: SearchProps) {
     setProduct(filteredProducts);
   }, [searchValue]);
 
-  
+
   return (
-    <Grid container justifyContent="center">
-      <Select defaultValue={10} id="named-select" name="demo-select">
-        <Option value={10}>Product</Option>
-        <Option value={20}>Seller</Option>
-        <Option value={30}>Price</Option>
-      </Select>
-      <SearchStyle>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-      </SearchStyle>
-    </Grid>
+    <SearchStyle>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder="Search…"
+        inputProps={{ "aria-label": "search" }}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
+    </SearchStyle>
   );
 }

@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { lightGreen, purple } from '@mui/material/colors';
+import { green, purple } from '@mui/material/colors';
 
 // Create a custom theme
 export const theme = createTheme({
@@ -8,10 +8,10 @@ export const theme = createTheme({
             main: "#ffffff",
         },
         secondary: {
-            main: lightGreen[500],
+            main: green[800],
         },
         text: {
-            primary: "#000000"
+            primary: "#000000",
         },
     },
 });

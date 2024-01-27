@@ -5,8 +5,10 @@ import {
     DialogContentText,
     DialogTitle,
     Grid,
-    TextField
+    TextField,
+    Typography
 } from "@mui/material"
+import { grey } from "@mui/material/colors"
 
 interface ModalProps {
     open: boolean;
@@ -18,12 +20,11 @@ function AddProductModal({ open, handleClose }: ModalProps) {
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle className="text-center">Adicionar Produto</DialogTitle>
             <DialogContent>
-                <DialogContentText className="text-center" padding={1}>
+                <Typography color={grey[700]} className="text-center" padding={1}>
                     Adiciona um produto que tenhas em stock para que outras pessoas o possam comprar!
-                </DialogContentText>
+                </Typography>
                 <Grid container direction="column" padding="0 5rem">
                     <TextField
-
                         autoFocus
                         id="title"
                         margin="normal"

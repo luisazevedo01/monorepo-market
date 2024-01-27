@@ -29,7 +29,7 @@ export const ProductCard = (props: TProductCardProps) => {
                     image={props.img}
                 />
                 <CardContent>
-                    <Grid container flexDirection="row">
+                    <Grid container flexDirection="row" justifyContent={'space-between'}>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.title}
                         </Typography>
@@ -40,11 +40,14 @@ export const ProductCard = (props: TProductCardProps) => {
                     {props.description && <Typography variant="body2" color="text.secondary">
                         {props.description}
                     </Typography>}
+                    <Grid container justifyContent={'flex-end'}>
+                        <Button color="success" size="small">Comprar</Button>
+                    </Grid>
                 </CardContent>
-                <CardActions>
+                {/*                <CardActions>
                     <Button color="success" size="small">Comprar</Button>
-                </CardActions>
+                </CardActions> */}
             </Paper>
-        </Card>
+        </Card >
     )
 }

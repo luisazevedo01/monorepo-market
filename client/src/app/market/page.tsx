@@ -42,13 +42,13 @@ export default function Market() {
                 alignItems='center'
                 justifyContent="center"
                 wrap="wrap"
-                padding={20}
+                padding={"5%"}
             >
                 {filteredProducts?.map((product: any, idx: any) => (
                     <ProductCard key={`product_${idx}`} img={product.image} title={product.title} price={product.price} />
                 ))}
             </Grid>
             <AddProductModal open={isOpen} handleClose={() => setIsOpen(false)} />
-        </Box>
+        </Box >
     )
 }
