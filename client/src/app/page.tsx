@@ -1,8 +1,15 @@
 "use client"
 import { useQuery } from "@apollo/client";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { DocumentProps } from "next/document";
 import { USERS } from "../graphql/queries/user";
+import type { DocumentHeadTagsProps } from '@mui/material-nextjs/v13-pagesRouter';
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
-export default function App() {
+loadDevMessages();
+loadErrorMessages();
+
+export default function App(props: DocumentProps & DocumentHeadTagsProps) {
 
   const { loading, error, data } = useQuery(USERS);
 
@@ -15,8 +22,8 @@ export default function App() {
 
 
   return (
-    <main className="">
-      <header>
+    <AppRouterCacheProvider {...props}>
+      {/*       <header>
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-green-900">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="https://flowbite.com" className="flex items-center">
@@ -34,7 +41,7 @@ export default function App() {
             </div>
           </div>
         </nav>
-      </header>
+      </header> */}
 
       <section className="bg-white dark:bg-green-950">
         <div className="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -277,6 +284,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </main >
+    </AppRouterCacheProvider>
   )
 }

@@ -4,8 +4,11 @@ import {
     CardActions,
     CardContent,
     CardMedia,
+    Grid,
+    Paper,
     Typography
 } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 type TProductCardProps = {
     img: string;
@@ -16,27 +19,32 @@ type TProductCardProps = {
 
 export const ProductCard = (props: TProductCardProps) => {
     return (
+
         <Card sx={{ width: 345, margin: '20px' }}>
-            <CardMedia
-                sx={{ objectFit: 'contain', height: '200px' }}
-                component="img"
-                alt={props.title}
-                image={props.img}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {props.title}
-                </Typography>
-                <Typography gutterBottom variant="body1" component="div">
-                    Preço: {props.price}€
-                </Typography>
-                {props.description && <Typography variant="body2" color="text.secondary">
-                    {props.description}
-                </Typography>}
-            </CardContent>
-            <CardActions>
-                <Button color="success" size="small">Comprar</Button>
-            </CardActions>
+            <Paper elevation={3}>
+                <CardMedia
+                    sx={{ objectFit: 'contain', height: '200px' }}
+                    component="img"
+                    alt={props.title}
+                    image={props.img}
+                />
+                <CardContent>
+                    <Grid container flexDirection="row">
+                        <Typography gutterBottom variant="h5" component="div">
+                            {props.title}
+                        </Typography>
+                        <Typography gutterBottom color={blue[700]} fontWeight="550" variant="body1" component="div">
+                            {props.price}€
+                        </Typography>
+                    </Grid>
+                    {props.description && <Typography variant="body2" color="text.secondary">
+                        {props.description}
+                    </Typography>}
+                </CardContent>
+                <CardActions>
+                    <Button color="success" size="small">Comprar</Button>
+                </CardActions>
+            </Paper>
         </Card>
     )
 }

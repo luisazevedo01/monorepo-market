@@ -3,9 +3,10 @@ import { PRODUCTS } from "@client/src/graphql/queries/product";
 import { ProductCard } from "../../components/cards/ProductCard";
 import { useQuery } from "@apollo/client";
 import { useMemo, useState } from "react";
-import { Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Paper } from "@mui/material";
 import AddProductModal from "@client/src/components/modal/AddProductModal";
 import Search from "@client/src/components/inputs/search";
+import { grey } from "@mui/material/colors";
 
 export default function Market() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,11 +25,17 @@ export default function Market() {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div className="bg-lime-200">
-            <div className="flex justify-center py-5">
+        <Box sx={{ backgroundColor: grey[100] }}>
+            <Grid
+                container
+                padding={2}
+                alignItems='center'
+                justifyContent='left'
+                gap='8px'
+            >
                 <Button onClick={addProduct} variant="contained" color="success">Adicionar Produto</Button>
-            </div>
-            <Search products={products} setProduct={setFilteredProducts} />
+                <Search products={products} setProduct={setFilteredProducts} />
+            </Grid>
             <Grid
                 container
                 minHeight="100vh"
@@ -42,6 +49,6 @@ export default function Market() {
                 ))}
             </Grid>
             <AddProductModal open={isOpen} handleClose={() => setIsOpen(false)} />
-        </div>
+        </Box>
     )
 }
