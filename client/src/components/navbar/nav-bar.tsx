@@ -40,8 +40,7 @@ function NavBar() {
 
     return (
         <AppBar position="static" color='primary'>
-            <Paper elevatiion>
-
+            <Paper elevation={1}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
 
