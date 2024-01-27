@@ -15,7 +15,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Paper } from '@mui/material';
 
-const pages = ['Products', 'Sellers', 'Map'];
+const pages = ['market', 'map'];
 const settings = ['Account', 'Logout'];
 
 function NavBar() {
@@ -80,12 +80,14 @@ function NavBar() {
                                 ))}
                             </Menu>
                         </Box>
-                        <img src="/logo.png" className="mr-3 h-6 sm:h-9" alt="Mercadinho Logo" />
+                        <a href="/" >
+                            <img src="/logo.png" className="mr-3 h-6 sm:h-9" alt="Mercadinho Logo" />
+                        </a>
                         <Typography
                             variant="h6"
                             noWrap
                             component="a"
-                            href="#app-bar-with-responsive-menu"
+                            href="/"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'none', md: 'flex' },
@@ -100,13 +102,15 @@ function NavBar() {
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'black', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
+                                <a href={page}>
+                                    <Button
+                                        key={page}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'black', display: 'block' }}
+                                    >
+                                        {page}
+                                    </Button>
+                                </a>
                             ))}
                         </Box>
 
@@ -145,7 +149,7 @@ function NavBar() {
                                 </>
                                 :
                                 <>
-                                    <Button color="inherit">Login</Button>
+                                    <Button color="inherit" href="/login" >Login</Button>
                                 </>
                             }
                         </Box>
