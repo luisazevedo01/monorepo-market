@@ -2,15 +2,18 @@
 import { PRODUCTS } from "@client/src/graphql/queries/product";
 import { ProductCard } from "../../components/cards/ProductCard";
 import { useQuery } from "@apollo/client";
-import { useMemo, useState } from "react";
-import { Box, Button, Grid, Paper } from "@mui/material";
+import { useEffect, useMemo, useState } from "react";
+import { Box, Button, CircularProgress, Grid, Paper } from "@mui/material";
 import AddProductModal from "@client/src/components/modal/AddProductModal";
 import Search from "@client/src/components/inputs/search";
 import { grey } from "@mui/material/colors";
+import { ClipLoader } from "react-spinners";
+import Loader from "@client/src/components/loader/Loader";
 
 export default function Market() {
     const [isOpen, setIsOpen] = useState(false);
     const { loading, data } = useQuery(PRODUCTS, { variables: { ownerId: 1 } });
+
 
     const products = useMemo(() => {
         return data?.products;
@@ -22,7 +25,7 @@ export default function Market() {
         setIsOpen(true)
     }
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loader color="secondary" />;
 
     return (
         <Box sx={{ backgroundColor: grey[100] }}>

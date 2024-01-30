@@ -5,6 +5,8 @@ import { DocumentProps } from "next/document";
 import { USERS } from "../graphql/queries/user";
 import type { DocumentHeadTagsProps } from '@mui/material-nextjs/v13-pagesRouter';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+import { useLoadingEffect } from "../context/loading";
+import Loader from "../components/loader/Loader";
 
 loadDevMessages();
 loadErrorMessages();
@@ -13,16 +15,15 @@ export default function App(props: DocumentProps & DocumentHeadTagsProps) {
 
   const { loading, error, data } = useQuery(USERS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) {
-    console.error('Error fetching data:', error);
-    return <p>Error: {error.message}</p>;
-  }
+  useLoadingEffect(loading);
+
+  if (loading) return <Loader />
+
   console.log('data: ', data);
 
 
   return (
-    <AppRouterCacheProvider {...props}>
+    <main>
       {/*       <header>
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-green-900">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
@@ -284,6 +285,6 @@ export default function App(props: DocumentProps & DocumentHeadTagsProps) {
           </div>
         </div>
       </footer>
-    </AppRouterCacheProvider>
+    </main>
   )
 }
