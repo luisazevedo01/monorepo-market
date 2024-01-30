@@ -74,7 +74,7 @@ function NavBar() {
                                 }}
                             >
                                 {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    <MenuItem key={`menu_${page}`} onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 ))}
