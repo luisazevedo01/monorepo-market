@@ -7,25 +7,26 @@ import { Box, Button, CircularProgress, Grid, Paper } from "@mui/material";
 import AddProductModal from "@client/src/components/modal/AddProductModal";
 import Search from "@client/src/components/inputs/search";
 import { grey } from "@mui/material/colors";
-import { ClipLoader } from "react-spinners";
 import Loader from "@client/src/components/loader/Loader";
+import BuyProductModal from "@client/src/components/modal/BuyProductModal";
+import useMarket from "./hooks/use-market";
 
 export default function Market() {
-    const [isOpen, setIsOpen] = useState(false);
-    const { loading, data } = useQuery(PRODUCTS, { variables: { ownerId: 1 } });
+    const {
+        products,
+        selectedProduct,
+        filteredProducts,
+        loading,
+        isAddProductModalOpen,
+        isBuyProductModalOpen,
+        addProduct,
+        buyProduct,
+        setFilteredProducts,
+        setIsAddProductModalOpen,
+        setIsBuyProductModalOpen
+    } = useMarket();
 
-
-    const products = useMemo(() => {
-        return data?.products;
-    }, [data])
-
-    const [filteredProducts, setFilteredProducts] = useState<[] | undefined>(products);
-
-    const addProduct = () => {
-        setIsOpen(true)
-    }
-
-    if (loading) return <Loader color="secondary" />;
+    if (loading) return <Loader />;
 
     return (
         <Box sx={{ backgroundColor: grey[100] }}>
@@ -48,10 +49,11 @@ export default function Market() {
                 padding={"5%"}
             >
                 {filteredProducts?.map((product: any, idx: any) => (
-                    <ProductCard key={`product_${idx}`} img={product.image} title={product.title} price={product.price} />
+                    <ProductCard key={`product_${idx}`} product={product} buyFn={buyProduct} />
                 ))}
             </Grid>
-            <AddProductModal open={isOpen} handleClose={() => setIsOpen(false)} />
+            <AddProductModal open={isAddProductModalOpen} handleClose={() => setIsAddProductModalOpen(false)} />
+            <BuyProductModal product={selectedProduct} open={isBuyProductModalOpen} handleClose={() => setIsBuyProductModalOpen(false)} />
         </Box >
     )
 }

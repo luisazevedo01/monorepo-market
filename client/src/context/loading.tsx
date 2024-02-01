@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, SetStateAction, Dispatch } from "react";
 
+//TODO: Apply LoadingContext correctly
+
 type ContextT = {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -16,7 +18,7 @@ interface LoadingProviderProps {
 
 export function LoadingProvider({ children }: LoadingProviderProps) {
   const [loading, setLoading] = useState(false);
-  console.log('LoadingProvider, ', loading)
+
   return (
     <LoadingContext.Provider value={{ loading, setLoading }}>
       {children}
@@ -34,7 +36,7 @@ export function useLoading() {
 
 export function useLoadingEffect(loading: boolean) {
   const { setLoading } = useLoading();
-  console.log('useLoadingEffect')
+
   useEffect(() => {
     setLoading(loading);
   });
@@ -42,7 +44,7 @@ export function useLoadingEffect(loading: boolean) {
 
 export function Loading() {
   const { loading } = useContext(LoadingContext);
-  console.log('inside Loading')
+
   return (
     loading ? (
       <div>

@@ -1,13 +1,12 @@
 'use client'
+import React from 'react';
 import GraphQLProvider from '../graphql/graphql-provider';
 import { Inter } from 'next/font/google'
 import '/src/styles/globals.css'
 import NavBar from '../components/navbar/nav-bar';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import React, { useState } from 'react';
 import { theme } from '../theme/theme';
-import { ClipLoader } from 'react-spinners';
 import { Loading, LoadingProvider } from '../context/loading';
 
 const inter = Inter({

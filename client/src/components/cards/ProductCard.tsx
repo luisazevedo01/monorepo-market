@@ -11,10 +11,12 @@ import {
 import { blue } from "@mui/material/colors";
 
 type TProductCardProps = {
-    img: string;
-    title: string;
+    product: any;
+    img?: string;
+    title?: string;
     description?: string;
-    price: string;
+    price?: string;
+    buyFn: (product: any) => void;
 }
 
 export const ProductCard = (props: TProductCardProps) => {
@@ -25,28 +27,25 @@ export const ProductCard = (props: TProductCardProps) => {
                 <CardMedia
                     sx={{ objectFit: 'contain', height: '200px' }}
                     component="img"
-                    alt={props.title}
-                    image={props.img}
+                    alt={props.product.title}
+                    image={props.product.image}
                 />
                 <CardContent>
                     <Grid container flexDirection="row" justifyContent={'space-between'}>
                         <Typography gutterBottom variant="h5" component="div">
-                            {props.title}
+                            {props.product.title}
                         </Typography>
                         <Typography gutterBottom color={blue[700]} fontWeight="550" variant="body1" component="div">
-                            {props.price}€
+                            {props.product.price}€
                         </Typography>
                     </Grid>
                     {props.description && <Typography variant="body2" color="text.secondary">
-                        {props.description}
+                        {props.product.description}
                     </Typography>}
                     <Grid container justifyContent={'flex-end'}>
-                        <Button color="success" size="small">Comprar</Button>
+                        <Button color="success" size="small" onClick={() => props.buyFn(props.product)}>Comprar</Button>
                     </Grid>
                 </CardContent>
-                {/*                <CardActions>
-                    <Button color="success" size="small">Comprar</Button>
-                </CardActions> */}
             </Paper>
         </Card >
     )
