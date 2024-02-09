@@ -1,19 +1,44 @@
-'use-client'
+'use client'
+import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "@mui/material";
-import React from "react";
+import GLMap, { MarkerPositionT } from "./components/gl-map/GLMap"; // Assuming this renders the MapContainer
+import mapboxgl from "mapbox-gl";
 
 
-const position = [51.505, -0.09];
-const mapStyle = { height: "90vh" };
+function MapPage() {
+    const [viewport, setViewport] = useState({
+        longitude: -27.90,
+        latitude: 38.58,
+        zoom: 10,
+    });
+    const [activeMarker, setActiveMarker] = useState<MarkerPositionT | null>(null);
+    const popupRef = useRef<mapboxgl.Popup | null>(null);
 
-const Map = () => {
+
+    const handleMarkerClick = (marker: MarkerPositionT) => {
+        setActiveMarker(marker);
+        if (popupRef.current) {
+            popupRef.current.setLngLat([marker.longitude, marker.latitude]);
+            //popupRef.current?.addTo(mapRef.current?.getMap());
+        }
+    };
+
+    useEffect(() => {
+        if (!activeMarker) {
+            popupRef.current?.remove();
+        }
+    }, [activeMarker]);
 
     return (
-        <Grid sx={mapStyle}>
-            {position}
-        </Grid>
-    )
+        <Grid sx={{ width: "100vw", height: "100vh" }}>
+            <GLMap
+                viewport={viewport}
+                onMove={(evt) => setViewport(evt.viewState)}
+                handleMarkerClick={handleMarkerClick}>
 
+            </GLMap>
+        </Grid>
+    );
 }
 
-export default Map;
+export default MapPage;
