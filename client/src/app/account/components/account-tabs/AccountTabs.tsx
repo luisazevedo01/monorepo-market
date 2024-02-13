@@ -1,48 +1,76 @@
+import React, { useState } from "react";
 import DonutChart from "@client/src/components/charts/DonutChart";
-import { Grid, styled, Typography } from "@mui/material"
+import { Box, Button, Grid, styled, Tab, Tabs } from "@mui/material"
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 
 const AccountTabs = () => {
+    const [value, setValue] = useState('orders');
+
+    const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: string) => {
+        setValue(newValue);
+        // Handle your onClick event logic here
+        console.log('Tab clicked:', newValue);
+    };
+
     return (
         <>
-            <Grid container justifyContent={'space-evenly'} mt={8} mb={2}>
-                <Typography variant="subtitle1" fontWeight="bold" >Orders</Typography>
-                <Typography variant="subtitle1" color="grey" >Payment</Typography>
-                <Typography variant="subtitle1" color="grey" >Cart</Typography>
-                <Typography variant="subtitle1" color="grey" >Activity</Typography>
-            </Grid>
-            <hr />
-            <Grid container justifyContent={'space-evenly'}>
-                <DonutChart
-                    width={300}
-                    height={300}
-                    data={[
-                        { name: "Alface", value: 36 },
-                        { name: "Tomatos", value: 30 },
-                        { name: "Cebola", value: 14 },
-                        { name: "Pepino", value: 20 },
-                    ]}
-                />
-                <DonutChart
-                    width={300}
-                    height={300}
-                    data={[
-                        { name: "Alface", value: 36 },
-                        { name: "Tomatos", value: 10 },
-                        { name: "Cebola", value: 24 },
-                        { name: "Pepino", value: 30 },
-                    ]}
-                />
-                <DonutChart
-                    width={300}
-                    height={300}
-                    data={[
-                        { name: "Alface", value: 46 },
-                        { name: "Tomatos", value: 20 },
-                        { name: "Cebola", value: 10 },
-                        { name: "Pepino", value: 24 },
-                    ]}
-                />
-            </Grid>
+            <TabContext value={value}>
+                <Box sx={{ width: '100%' }} mt={5}>
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        aria-label="secondary tabs example"
+                        centered
+                    >
+                        <Tab value="orders" label="Orders" />
+                        <Tab value="favorited" label="Liked Products" />
+                        <Tab value="payment" label="Payment" />
+                        <Tab value="activity" label="Activity" />
+                    </Tabs>
+                </Box>
+                <hr />
+                <TabPanel value="orders">Orders Tab</TabPanel>
+                <TabPanel value="payment">Payment Tab</TabPanel>
+                <TabPanel value="favorited">Favorited Tab</TabPanel>
+                <TabPanel value="activity">
+                    <Grid container justifyContent={'space-evenly'}>
+                        <DonutChart
+                            width={300}
+                            height={300}
+                            data={[
+                                { name: "Alface", value: 36 },
+                                { name: "Tomatos", value: 30 },
+                                { name: "Cebola", value: 14 },
+                                { name: "Pepino", value: 20 },
+                            ]}
+                        />
+                        <DonutChart
+                            width={300}
+                            height={300}
+                            data={[
+                                { name: "Alface", value: 36 },
+                                { name: "Tomatos", value: 10 },
+                                { name: "Cebola", value: 24 },
+                                { name: "Pepino", value: 30 },
+                            ]}
+                        />
+                        <DonutChart
+                            width={300}
+                            height={300}
+                            data={[
+                                { name: "Alface", value: 46 },
+                                { name: "Tomatos", value: 20 },
+                                { name: "Cebola", value: 10 },
+                                { name: "Pepino", value: 24 },
+                            ]}
+                        />
+                    </Grid>
+                </TabPanel>
+            </TabContext>
         </>
     )
 }

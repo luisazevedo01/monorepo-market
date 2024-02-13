@@ -37,7 +37,7 @@ function GLMap({ viewport, onMove, handleMarkerClick }: GLMapProps) {
       onMove={onMove}
       mapboxAccessToken={accessToken}
       style={{ width: "100%", height: "100%" }}
-      mapStyle={MapStylesEnum.SATELLITE_STREETS}
+      mapStyle={MapStylesEnum.STANDARD}
     >
       {MOCKED_PRODUCTS.map((product) => {
         if (product?.longitude && product?.latitude) {

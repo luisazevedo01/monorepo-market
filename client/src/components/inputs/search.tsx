@@ -64,7 +64,7 @@ export default function Search({ products, setProduct }: SearchProps) {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    const filteredProducts = products.filter((value) =>
+    const filteredProducts = products?.filter((value) =>
       value.title.toLowerCase().includes(searchValue.toLowerCase())
     );
     setProduct(filteredProducts);
