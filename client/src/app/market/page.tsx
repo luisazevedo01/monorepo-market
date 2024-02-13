@@ -1,9 +1,6 @@
 'use client'
-import { PRODUCTS } from "@client/src/graphql/queries/product";
 import { ProductCard } from "../../components/cards/ProductCard";
-import { useQuery } from "@apollo/client";
-import { useEffect, useMemo, useState } from "react";
-import { Box, Button, CircularProgress, Grid, Paper } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import AddProductModal from "@client/src/components/modal/AddProductModal";
 import Search from "@client/src/components/inputs/search";
 import { grey } from "@mui/material/colors";
@@ -11,7 +8,7 @@ import Loader from "@client/src/components/loader/Loader";
 import BuyProductModal from "@client/src/components/modal/BuyProductModal";
 import useMarket from "./hooks/use-market";
 
-export default function Market() {
+function MarketPage() {
     const {
         products,
         selectedProduct,
@@ -57,3 +54,5 @@ export default function Market() {
         </Box >
     )
 }
+
+export default MarketPage;

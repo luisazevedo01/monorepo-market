@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useRegisterForm } from "./hooks/use-register-form";
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Register() {
+function Register() {
     const fromRegister = useRegisterForm();
     const fromCreateUser = useCreateUser({
         onCompleted: () => toast('User created successfully!'),
@@ -75,3 +75,5 @@ export default function Register() {
         </main >
     )
 }
+
+export default Register;

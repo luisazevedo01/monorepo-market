@@ -1,8 +1,6 @@
 "use client"
 import { useQuery } from "@apollo/client";
-import { DocumentProps } from "next/document";
 import { USERS } from "../graphql/queries/user";
-import type { DocumentHeadTagsProps } from '@mui/material-nextjs/v13-pagesRouter';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import { useLoadingEffect } from "../context/loading";
 import Loader from "../components/loader/Loader";
@@ -17,9 +15,6 @@ export default function App() {
   useLoadingEffect(loading);
 
   if (loading) return <Loader />
-
-  console.log('users: ', data);
-
 
   return (
     <main>

@@ -8,7 +8,6 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -19,7 +18,7 @@ const pages = ['market', 'map'];
 const settings = ['Account', 'Logout'];
 
 function NavBar() {
-    const isAuthenticated = false;
+    const isAuthenticated = true;
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -117,35 +116,14 @@ function NavBar() {
                         <Box sx={{ flexGrow: 0 }}>
                             {isAuthenticated ?
                                 <>
-                                    <ShoppingCartIcon sx={{ mx: "25px" }} />
+                                    <IconButton href={'/cart'} sx={{ p: 0, mx: "25px", color: "black" }}>
+                                        <ShoppingCartIcon />
+                                    </IconButton>
 
-                                    <Tooltip title="Open settings">
-                                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                        </IconButton>
-                                    </Tooltip>
-                                    <Menu
-                                        sx={{ mt: '45px' }}
-                                        id="menu-appbar"
-                                        anchorEl={anchorElUser}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        keepMounted
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={Boolean(anchorElUser)}
-                                        onClose={handleCloseUserMenu}
-                                    >
-                                        {settings.map((setting) => (
-                                            <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                                <Typography textAlign="center">{setting}</Typography>
-                                            </MenuItem>
-                                        ))}
-                                    </Menu>
+                                    <IconButton href={'/account'} sx={{ p: 0 }}>
+                                        <Avatar>L</Avatar>
+                                    </IconButton>
+
                                 </>
                                 :
                                 <>
