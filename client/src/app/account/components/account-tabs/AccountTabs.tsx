@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import DonutChart from "@client/src/components/charts/DonutChart";
-import { Box, Button, Grid, styled, Tab, Tabs } from "@mui/material"
+import { Box, Grid, Tab, Tabs } from "@mui/material"
 import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
 const AccountTabs = () => {
@@ -10,8 +9,6 @@ const AccountTabs = () => {
 
     const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: string) => {
         setValue(newValue);
-        // Handle your onClick event logic here
-        console.log('Tab clicked:', newValue);
     };
 
     return (
