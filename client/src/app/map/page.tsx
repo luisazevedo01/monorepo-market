@@ -2,17 +2,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import GLMap, { MarkerPositionT } from "./components/gl-map/GLMap"; // Assuming this renders the MapContainer
-import mapboxgl from "mapbox-gl";
-
+import { Popup } from "mapbox-gl";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapPage() {
     const [viewport, setViewport] = useState({
-        longitude: -27.90,
+        longitude: -27.80,
         latitude: 38.58,
-        zoom: 10,
+        zoom: 11,
     });
     const [activeMarker, setActiveMarker] = useState<MarkerPositionT | null>(null);
-    const popupRef = useRef<mapboxgl.Popup | null>(null);
+    const popupRef = useRef<Popup | null>(null);
 
 
     const handleMarkerClick = (marker: MarkerPositionT) => {
