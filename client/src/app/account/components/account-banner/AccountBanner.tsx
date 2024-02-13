@@ -1,40 +1,37 @@
 import { Grid, Typography } from "@mui/material";
-import styled from "styled-components";
-
-
-const StyledBannerImg = styled.img`
-    border-radius: 20px;
-    max-height: 200px;
-    object-fit: cover;
-`
-
-const StyledProfileImg = styled.img`
-    top: 220px;
-    position: absolute;
-    border-radius: 50%;
-    object-fit: cover;
-    max-height: 100px;
-`
 
 const AccountBanner = () => {
+
     return (
-        <Grid container justifyContent={"center"} mt="16px">
-            <StyledBannerImg
+        <Grid container justifyContent={"center"} mt={2}>
+            <img
                 width={"90%"}
                 height={200}
                 src={`/banner.jpeg?auto=format`}
                 srcSet={`/banner.jpeg?dpr=2 2x`}
                 alt="Profile picture"
                 loading="lazy"
+                style={{
+                    borderRadius: "20px",
+                    maxHeight: "200px",
+                    objectFit: "cover"
+                }}
             />
             <Grid container flexDirection={'column'} alignItems={"center"} mt={5}>
-                <StyledProfileImg
+                <img
                     width={100}
                     height={100}
                     src={`/profile.jpeg?auto=format`}
                     srcSet={`/profile.jpeg?dpr=2 2x`}
                     alt="Profile picture"
                     loading="lazy"
+                    style={{
+                        top: "220px",
+                        position: "absolute",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        maxHeight: "100px"
+                    }}
                 />
                 <Typography variant="h6" mt={2} fontWeight="bold" >Luis Azevedo</Typography>
                 <Typography variant="subtitle2" color="grey" >São Jorge, Açores, PT</Typography>
