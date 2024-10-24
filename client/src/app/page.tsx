@@ -1,18 +1,11 @@
 "use client"
-import { useQuery } from "@apollo/client";
-import { USERS } from "../graphql/queries/user";
-import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
-import { useLoadingEffect } from "../context/loading";
 import Loader from "../components/loader/Loader";
-
-loadDevMessages();
-loadErrorMessages();
+import { useFetchUsers } from "../services/users";
 
 export default function App() {
 
-  const { loading, data } = useQuery(USERS);
-
-  useLoadingEffect(loading);
+  const { loading, data } = useFetchUsers();
+  console.log('users: ', data)
 
   if (loading) return <Loader />
 

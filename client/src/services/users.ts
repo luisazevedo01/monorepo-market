@@ -1,5 +1,6 @@
-import { MutationHookOptions, useMutation } from "@apollo/client";
+import { MutationHookOptions, QueryHookOptions, useMutation, useQuery } from "@apollo/client";
 import { CREATE_USER } from "../graphql/mutations/user";
+import { FETCH_USERS } from "../graphql/queries/user";
 
 export const useCreateUser = (
     options: MutationHookOptions<{ createUser: any }> = {}
@@ -11,3 +12,11 @@ export const useCreateUser = (
         call: (createUserInput: any) => call({ variables: { createUserInput } })
     }
 }
+
+export const useFetchUsers = (
+    options: QueryHookOptions = {}
+) => (
+    useQuery(FETCH_USERS, {
+        ...options
+    })
+)
